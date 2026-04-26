@@ -3,10 +3,14 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.0",
+    "date-fns": "^4.1.0",
     "next": "latest",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
