@@ -2,10 +2,6 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 const API_BASE_URL = "https://api.artic.edu/api";
 
-/**
- * Query parameters for minimal artwork fields
- * Used when fetching list of artworks to minimize payload
- */
 const MINIMAL_FIELDS = [
   "id",
   "title",
@@ -22,13 +18,12 @@ export const artworkApiQuery = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: API_BASE_URL }),
   endpoints: (builder) => ({
     getArtworks: builder.query({
-      query: (params?: { page?: number; limit?: number }) => {
-        const { page = 1, limit = 20 } = params || {};
+      query: (params?: { page?: number }) => {
+        const { page = 1 } = params || {};
         return {
           url: "/v1/artworks",
           params: {
             page,
-            limit,
             fields: MINIMAL_FIELDS,
           },
         };
